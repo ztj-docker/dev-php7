@@ -3,7 +3,7 @@ FROM ztj1993/alpine-php7:latest
 LABEL maintainer="Ztj <ztj1993@gmail.com>"
 
 ADD https://getcomposer.org/composer.phar /usr/local/bin/composer
-ADD http://phar.phpunit.cn/phpunit.phar /usr/local/bin/phpunit
+ADD https://phar.phpunit.de/phpunit.phar /usr/local/bin/phpunit
 
 RUN echo "---------- apache----------" \
   && apk update \
