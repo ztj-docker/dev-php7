@@ -9,7 +9,6 @@ RUN echo "---------- apache----------" \
   && apk update \
   && apk add apache2 php7-apache2 \
   && rm -rf /var/cache/apk/* \
-  && mkdir -p /run/apache2 \
   && echo "---------- nginx----------" \
   && apk update \
   && apk add nginx \
@@ -22,3 +21,13 @@ RUN echo "---------- apache----------" \
   && echo "---------- phpunit ----------" \
   && chmod +x /usr/local/bin/phpunit \
   && echo "---------- end ----------"
+
+RUN mkdir -p /run/apache2
+RUN ln -sf /dev/stdout /var/log/apache2/access.log
+RUN ln -sf /dev/stderr /var/log/apache2/error.log
+RUN sed -i 's@^#ServerName.*@ServerName localhost@' /etc/apache2/httpd.conf
+RUN sed -i "s@Require ip 127@Require ip 127 192 10@" /etc/apache2/conf.d/info.conf
+RUN sed -i "s@AllowOverride None@AllowOverride All@" /etc/apache2/httpd.conf
+RUN sed -i "s@AllowOverride none@AllowOverride all@" /etc/apache2/httpd.conf
+RUN sed -i "s@^#LoadModule rewrite_module@LoadModule rewrite_module@" /etc/apache2/httpd.conf
+RUN sed -i "s@^#LoadModule info_module@LoadModule info_module@" /etc/apache2/httpd.conf
