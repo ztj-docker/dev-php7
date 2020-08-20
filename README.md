@@ -17,6 +17,13 @@ docker run -ti --rm ztj1993/dev-php7 sleep 10000
 
 ## 更新日志
 
+> 2020-08-21
+
+- 增加了 /entrypoint.sh 入口脚本
+- 增加了 /srv/start.sh 启动脚本
+- 增加了 /srv/bin/start.sh 启动脚本
+- 增加了 docker-compose.yml
+
 > 2020-05-11
 
 初始构建
