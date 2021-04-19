@@ -35,10 +35,4 @@ RUN composer self-update
 # Setting
 WORKDIR /srv
 EXPOSE 80
-
-# Entrypoint
-ADD entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
-
 CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
