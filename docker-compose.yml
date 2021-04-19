@@ -1,0 +1,17 @@
+version: "3"
+services:
+  dev-php7:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ztj1993/dev-php7:local
+    hostname: dev-php7-local
+    container_name: dev-php7-local
+    network_mode: bridge
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    expose:
+      - 80/tcp
+    ports:
+      - 80/tcp
