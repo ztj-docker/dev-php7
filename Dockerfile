@@ -32,6 +32,9 @@ RUN composer config -g repo.packagist composer https://mirrors.aliyun.com/compos
 RUN composer config -g secure-http false
 RUN composer self-update
 
+RUN rm -rf /var/www/localhost/htdocs
+RUN ln -s /srv /var/www/localhost/htdocs
+
 # Setting
 WORKDIR /srv
 EXPOSE 80
